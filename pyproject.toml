@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "endpoint-api-hunter-io"
+version = "0.1.0"
+description = "test task"
+authors = ["Oleksandr Kondratiuk <alex_kondr@outlook.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "endpoint_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.108.0"
+uvicorn = "^0.25.0"
+pydantic = {extras = ["dotenv"], version = "^2.5.3"}
+pydantic-settings = "^2.1.0"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
