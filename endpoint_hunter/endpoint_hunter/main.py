@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 
-from src.routes import find_verify_email, result
+from .src.routes import find_verify_email, result
 
 
 app = FastAPI()
