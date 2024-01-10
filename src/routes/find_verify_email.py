@@ -2,21 +2,17 @@ import requests
 from fastapi import APIRouter, Depends
 
 from src.conf.config import settings
-from src.schemas.email import EmailModel, EmailVerify, Email
+from src.schemas.email import PersonModel, EmailVerify, Email
 
 
 router = APIRouter(prefix="/email", tags=["email"])
 
 
 @router.get("/find", name="Return email if find person", response_model=Email)
-async def find_email(body: EmailModel = Depends()):
+async def find_email(body: PersonModel = Depends()):
 
-    params = {
-        "domain": body.domain,
-        "first_name": body.first_name,
-        "last_name": body.last_name,
-        "api_key": settings.api_hunter_io
-    }
+    params = dict(body)
+    params["api_key"] = settings.api_hunter_io
     url = f"https://api.hunter.io/v2/email-finder"
     response = requests.get(url=url, params=params)
     email = response.json().get("data", {}).get("email", "Not found")

@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class EmailModel(BaseModel):
+class PersonModel(BaseModel):
     domain: str = "gmail.com"
     first_name: str = "Foo"
     last_name: str = "Bar"
