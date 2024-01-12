@@ -11,7 +11,7 @@ except ModuleNotFoundError:
 router = APIRouter(prefix="/result", tags=["result"])
 
 
-@router.get("/", name="Return result", response_model=DBModel)
+@router.get("/", name="Return data", response_model=DBModel)
 async def get_result():
     return db.result
 
@@ -28,7 +28,7 @@ async def update_data(data: DBModelUpdate = Depends()):
     return db.result
 
 
-@router.delete("/delete", name="Cleane result", response_model=DBModel)
+@router.delete("/", name="Clear data", response_model=DBModel)
 async def delete_result():
     db.result = {}
     return db.result
