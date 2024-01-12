@@ -1,4 +1,4 @@
-from setuptools import setup, find_namespace_packages
+from setuptools import setup
 
 setup(name='endpoint_hunter',
       version='1',
@@ -7,7 +7,6 @@ setup(name='endpoint_hunter',
       author='Alex Kondr',
       author_email='alex_kondr@outlook.com',
       license='MIT',
-      packages=find_namespace_packages(),
       install_requires=['fastapi', 'uvicorn', 'pydantic', 'pydantic-settings', 'requests'],
-      entry_points={'console_scripts': ['api_hunter = endpoint_hunter:main']}
+      entry_points={'console_scripts': ['api_hunter = endpoint_api_hunter_io.main:start']}
       )

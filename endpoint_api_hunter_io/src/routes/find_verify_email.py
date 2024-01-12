@@ -1,9 +1,14 @@
 import requests
 from fastapi import APIRouter, Depends
 
-from src.conf.config import settings
-from src.db import db
-from src.schemas.email import PersonModel, EmailVerify, Email
+try:
+    from src.conf.config import settings
+    from src.db import db
+    from src.schemas.email import PersonModel, EmailVerify, Email
+except ModuleNotFoundError:
+    from ...src.conf.config import settings
+    from ...src.db import db
+    from ...src.schemas.email import PersonModel, EmailVerify, Email
 
 
 router = APIRouter(prefix="/email", tags=["email"])

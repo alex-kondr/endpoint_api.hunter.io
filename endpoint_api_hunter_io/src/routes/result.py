@@ -1,10 +1,14 @@
 from fastapi import APIRouter, Depends
 
-from src.db import db
-from src.schemas.db import DBModel, DBModelUpdate
+try:
+    from src.db import db
+    from src.schemas.db import DBModel, DBModelUpdate
+except ModuleNotFoundError:
+    from ...src.db import db
+    from ...src.schemas.db import DBModel, DBModelUpdate
 
 
-router = APIRouter(prefix="/result", tags=["email"])
+router = APIRouter(prefix="/result", tags=["result"])
 
 
 @router.get("/", name="Return result", response_model=DBModel)
@@ -12,7 +16,7 @@ async def get_result():
     return db.result
 
 
-@router.put("/", name="Data replacement", response_model=DBModel)
+@router.post("/", name="Data replacement", response_model=DBModel)
 async def replace_data(data: DBModel = Depends()):
     db.result = data
     return db.result
